@@ -7,15 +7,15 @@ let newDoc = function () {
          <img src="images/docs_48dp.png" placeholder="docs" />
          <input type="text" placeholder="Untitled document" />
          <ul id="options">
-             <li>File</li>
-             <li>Edit</li>
-             <li>View</li>
-             <li>Insert</li>
-             <li>Format</li>
-             <li>Tools</li>
-             <li>Table</li>
-             <li>Add-Ons</li>
-             <li>Help</li>
+             <li><button class="mainOption">File</button></li>
+             <li><button class="mainOption">Edit</button></li>
+             <li><button class="mainOption">View</button></li>
+             <li><button class="mainOption">Insert</button></li>
+             <li><button class="mainOption">Format</button></li>
+             <li><button class="mainOption">Tools</button></li>
+             <li><button class="mainOption">Table</button></li>
+             <li><button class="mainOption">Add-Ons</button></li>
+             <li><button class="mainOption">Help</button></li>
            </ul>
         </section>
         <section id="styleOpt">
