@@ -1,0 +1,12 @@
+#status { 
+    font-size: 13px; 
+}
+
+#status.saved {
+    color: green;
+}
+
+#textarea { 
+    width: 400px; 
+    height: 200px; 
+}
