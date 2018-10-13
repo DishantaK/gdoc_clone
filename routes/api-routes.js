@@ -15,6 +15,16 @@ module.exports = function (app) {
             });
     });
 
+    app.get('/api/:listId', function (req, res) {
+        db.find({_id: req.params.listId})
+            .then(function (db) {
+                res.json(db);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
     // Route for saving a document via POST request
     app.post('/add', function (req, res) {
         db.create(req.body)
@@ -39,8 +49,7 @@ module.exports = function (app) {
 
     // Route for updating a document via PUT request
     app.put(`/api/update/:id`, function (req, res) {
-        // Find to do entry by ID
-        db.findOneAndUpdate({ _id: req.params.id }, { $set: { completed: true } })
+        db.findById({ _id: req.params.id })
             .then(function (db) {
                 res.json(db);
             })
@@ -49,4 +58,17 @@ module.exports = function (app) {
             });
     });
 
+    // Route for updating a document via PUT request
+    // app.get(`/get/:id`, function (req, res) {
+    //     db.findOneAndUpdate({ _id: req.params.id }, { $set: { completed: true } })
+    //         .then(function (db) {
+    //             res.json(db);
+    //         })
+    //         .catch(function (err) {
+    //             res.json(err);
+    //         });
+    // });
+
 };
+
+

@@ -4,24 +4,21 @@ const Schema = mongoose.Schema;
 
 const applistSchema = new Schema({
 
-    item: {
-        type: String,
-        unique: true,
-        required: [true, 'Enter item']
+    docTitle: {
+        type: String
+        // unique: true,
+        // required: [true, 'Enter item']
     },
-
-    content: {
-        type: String,
-        unique: true,
+    docContent: {
+        type: String
+        // unique: true,
     }
 
-    // completed: {
-    //     type: Boolean,
-    //     default: false
-    // }
 });
 
-// This creates schema using Mongoose model method
+// Creates schema with Mongoose
 let applist = mongoose.model('applist', applistSchema);
 
 module.exports = applist;
+
+
