@@ -1,7 +1,12 @@
 const openDoc = function (event) {
     event.preventDefault();
-    const id = event.target.id;
-    $.ajax({ url: `/get/${id}`, method: "GET" }).then(function (dbResponse) {
+
+    const docId = $(this).attr('id');
+    
+
+    $.ajax({ url: `/get/${docId}`, method: "GET" }).then(function (dbResponse) {
+        console.log('doc id', dbResponse);
+
             const selectedDoc = (
                 `
                 <div class="title-header">

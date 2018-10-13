@@ -4,19 +4,9 @@ const db = require('../models/applist');
 // 'app' contains the Express application
 module.exports = function (app) {
 
-     // Route for retrieving documents via a GET request
+     // Route for retrieving documents via a GET request and displaying them in a list
      app.get('/api/applist', function (req, res) {
         db.find({})
-            .then(function (db) {
-                res.json(db);
-            })
-            .catch(function (err) {
-                res.json(err);
-            });
-    });
-
-    app.get('/api/:listId', function (req, res) {
-        db.find({_id: req.params.listId})
             .then(function (db) {
                 res.json(db);
             })
@@ -35,6 +25,19 @@ module.exports = function (app) {
                 res.json(err);
             });
     });
+
+
+    // Route for showing and existing document
+    app.get('/get/:docId', function (req, res) {
+        db.findOne({_id: req.params.docId})
+            .then(function (db) {
+                res.json(db);
+            })
+            .catch(function (err) {
+                res.json(err);
+            });
+    });
+
 
     // Route for deleting a document via DELETE request
     app.delete('/delete/:id', function (req, res) {
