@@ -1,20 +1,25 @@
-express = require('express');
-path = require('path');
-
-app = express();
-PORT = 3000;
+const express = require('express');
+const bodyParser = require('body-parser');
+const mongoose = require('mongoose');
 
 
-app.use(express.urlencoded({ extended: true }));
-app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public')));
+const PORT = process.env.PORT || 3000;
+
+const app = express();
 
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.use(express.static('public'));
 
 
+// mongoose.connect('', { useNewUrlParser: true });
 
-require('./routes/html')(app);
 
-app.listen(PORT, function(){
-  console.log(`App is now listening on PORT ${PORT}`)
-})
+require('./routes/routes')(app);
+
+// Start the server
+app.listen(PORT, function() {
+  console.log(`App running on port ${PORT}`);
+});
+
