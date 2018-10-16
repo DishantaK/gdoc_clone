@@ -10,49 +10,64 @@ These instructions will get you a copy of the project up and running on your loc
 
 What things you need to install the software and how to install them
 
-```
-Give examples.. i.e folder structure. Why public vs. gitpages etc. 
+This project uses NodeJS, we recommend installing that before continuing
+For db edits, this uses mongodb -> install any related software or npms
 ```
 
 ### Installing
 
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
+A step by step series of examples that tell you how to get a development environment running
 
 ```
-Example Local
+1. Create a new repository in your account | select Node from gitignore and initialize with a readme
+2. Create a folder on your local machine
+3. Clone this existing Repository into this folder
+4. Open this folder in your workspace (vscode, atom, etc.)
+5. Initialize a new  node project, npm install, and Start node server
+6. Open Mongo/mongod and create a new db
+7. Make any desired changes
+8. Add/Commit/Push to your new repo
+
 ```
 
 ```
 Heroku/public
+1. Create a new repository in your account | select Node from gitignore and initialize with a readme
+2. Create a new project in heroku and link to your github
+3. Add Mongodb as an add on in your heroku project and copy the login/url credentials
+4  Create a folder on your local machine
+5. Clone this existing Repository into this folder
+   - Open this folder in your workspace (vscode, atom, etc.)
+5. Initialize a new  node project, npm install all related, and Start node server
+6. Add your db information to your server page -- Make any desired changes
+7. Add/Commit/Push to your new repo
+8. 
+
 ```
-
-And repeat
-
-```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
 
 ### And coding style tests
 
 This app uses dynamic rendering to display the documents to the page. This is a one page app, so any rendered element will be in the separate stylesheet titled doc.css
 
 ```
-Styling Home UI
+Styling Home UI // Sections to look out for
+
+header 
+- #top nav -> Houses Entire nav section
+- #top h1 img -> Logo
+- .new : Div w/ plus icon for creating a new document
+- .docPrev : Image/Caption cards for content
+
 ```
 
 ```
-Styling Docs Page
+Styling Docs Page // Sections to look out for
+- #measure: Empty nav section which can be used for a margin editor
+- #docArea: White space for document and keypress entry
+- #options: File/ Edit/ View / ETc.
+- The rest are semantic
 ```
-
+```
 ## Deployment
 
 Add additional notes about how to deploy this on a live system. Gonna add stuff here on deploying to Heroku
@@ -83,4 +98,4 @@ This project is free for private or public use, just be nice and give us a shout
 
 * Hat tip to our instructors CJ and Hannah!
 * Google Docs for being awesome
-* More to add....
+* Thanks for watching....
