@@ -123,3 +123,4 @@ const theSize = function(){
   document.execCommand("fontSize", false, selSize);
   document.designMode = "off";
 }
+

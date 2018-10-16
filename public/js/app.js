@@ -3,7 +3,7 @@ const loadDocs = function () {
         .then(function (data) {
             const docItem = data.map((element) =>
                 `
-                <a class="open-doc-btn" id='${element._id}' href="/doc.html/${element._id}">
+                <a class="open-doc-btn" id='${element._id}' href="/doc/${element._id}">
                 <div class="docPrev">
                         ${element.docContent}
                     <section class="caption">
@@ -22,7 +22,7 @@ const loadDocs = function () {
                 `
             )
             $('#gdoclist').html(docItem);
-            $('.open-doc-btn').on('click', openDoc);
+            // $('.open-doc-btn').on('click', openDoc);
             $('.fa-times').on('click', deleteDoc);
         })
 };

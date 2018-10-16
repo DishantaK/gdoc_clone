@@ -11,25 +11,19 @@
     crossorigin="anonymous">
   <link href="https://fonts.googleapis.com/css?family=Noto+Sans+JP:100,400" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/doc.css" />
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="/css/doc.css" />
   <title>Clone: Google Docs</title>
 </head>
 
 <body>
 
   <form id="docForm">
-    <!-- <div class="title-header">
-      <input type="text" placeholder="Untitled document" name="Document Title" id="input-title">
-    </div>
-    <div class="page">
-      <input type="textarea" placeholder="Document Content" name="Document Content" id="input-content" />
-      <button type="submit" id="add-button"><i class="fas fa-share"></i></button>
-    </div> -->
+   <!-- This is where the div document editor loads (Old Version) -->
   </form>
 
   <form id="gdocEdit">
-    <!-- This is where the document editor loads -->
+    <!-- This is where the page document editor loads -->
   </form>
 
   <header id="top">
@@ -81,18 +75,17 @@
       <i class="fas fa-folder fa-lg"></i>
     </div>
 
-
     <section id="gdoclist">
       <!-- This is where all existing gDocs are listed -->
     </section>
-
 
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <script src="js/doc.js"></script>
-  <script src="js/app.js"></script>
+  <!-- <script src="js/test.js"></script>   -->
+  <script src="/js/doc.js"></script>
+  <script src="/js/app.js"></script>
 
 </body>
 
