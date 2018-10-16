@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Google Docs Clone",
   "main": "server.js",
+
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -11,7 +12,9 @@
     "type": "git",
     "url": "git+https://github.com/DishantaK/gdoc_clone.git"
   },
+
   "author": "Dishanta K , Matt B , Christian G, Marcus R",
+
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DishantaK/gdoc_clone/issues"
