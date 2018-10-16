@@ -67,7 +67,7 @@ Styling Docs Page // Sections to look out for
 - #options: File/ Edit/ View / ETc.
 - The rest are semantic
 ```
-
+```
 ## Deployment
 
 Add additional notes about how to deploy this on a live system. Gonna add stuff here on deploying to Heroku
