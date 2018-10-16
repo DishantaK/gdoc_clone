@@ -1,10 +1,10 @@
-#docSection {
+.docSection {
     background-color: #f4f4f4;
     padding: 0px;
     
 }
 
-#docHeader {
+.docHeader {
     background-color: #fff;
     height: 120px;
     padding: 0px;
@@ -23,7 +23,7 @@
 
 
 
-#docArea {
+.docArea {
     background-color: #fff;
     width: 80%;
     margin: auto;
@@ -31,7 +31,7 @@
     height: 90vh;
 }
 
-#docTitle {
+.docTitle {
     height:70%;
    
     display: grid;
@@ -40,7 +40,7 @@
     border-bottom: 1px solid rgb(221, 221, 221);
 }
 
-#docTitle img {
+.docTitle img {
     grid-row: span 2;
     grid-template-columns: span 1;
     width: 50px;
@@ -48,13 +48,13 @@
     margin: 20px;
 }
 
-#docTitle input {
+.docTitle input {
     background-color: transparent;
     border: none;
     width: 25%;
 }
 
-#docOpt {
+.docOpt {
     height:30%;
 }
 
