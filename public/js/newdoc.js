@@ -1,100 +1,56 @@
-let newDoc = function () {
-  $('body').replaceWith(
-    `
-        <header id="docHeader">
-        <section id="docTitle">
-         <img src="images/docs_48dp.png" placeholder="docs" />
-         <input type="text" placeholder="Untitled document" />
-         <ul id="options">
-             <li><button class="mainOption">File</button></li>
-             <li><button class="mainOption">Edit</button></li>
-             <li><button class="mainOption">View</button></li>
-             <li><button class="mainOption">Insert</button></li>
-             <li><button class="mainOption">Format</button></li>
-             <li><button class="mainOption">Tools</button></li>
-             <li><button class="mainOption">Table</button></li>
-             <li><button class="mainOption">Add-Ons</button></li>
-             <li><button class="mainOption">Help</button></li>
-           </ul>
-        </section>
-        <section id="styleOpt">
-          <span></span>
-          <span></span>
-          <span></span>
-        </section>
-   </header>
-    <main id="docSection">  
-        <div id="measure"></div>
-        <div id="docArea"></div>
-     </main>
-     
-     `
-  );
+
+//font family selection
+const theFont = function(){
+    let selFont = $('#thefonts').val();
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
+
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("fontName", false, selFont);
+    document.designMode = "off";
 }
 
-$('#newPlus').on('click', newDoc);
-// $('#loadDoc').on('click', openGDoc);
+//font color selection
+const theColor = function(){
+    let selColor = $('#fontcolor').val();
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
 
-////////////////////////
-
-const openGDoc = function (event) {
-  event.preventDefault();
-  const docId = $(this).attr('id');
-  $.ajax({ url: `/get/${docId}`, method: "GET" }).then(function (dbResponse) {
-    console.log('doc id', dbResponse);
-    const selectedDoc = (
-      `
-        <div class="modal-fullpage">
-        <header id="docHeader">
-        <section id="docTitle">
-         <img src="images/docs_48dp.png" placeholder="docs" />
-         <input type="text" placeholder="Untitled document" value="${dbResponse.docTitle}" />
-          <ul id="options">
-             <li><button class="mainOption">File</button></li>
-             <li><button class="mainOption">Edit</button></li>
-          </ul>
-        </section>
-        <section id="styleOpt">
-          <span></span>
-          <span></span>
-          <span></span>
-        </section>
-        </header>
-        <main id="docSection">  
-        <div id="measure"></div>
-        <div id="docArea">
-          ${dbResponse.docContent}
-        </div>
-        </main>
-        </div>
-        `
-    )
-    $('#gdocEdit').html(selectedDoc);
-  })
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("ForeColor", false, selColor);
+    document.designMode = "off";
 }
 
+//font size selection
+const theSize = function(){
+    let selSize = $('#fontsize').val();
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
 
-////////////////////////////////
-
-const openXDoc = function (event) {
-  event.preventDefault();
-  const docId = $(this).attr('id');
-  $.ajax({ url: `/get/${docId}`, method: "GET" }).then(function (dbResponse) {
-    console.log('doc id', dbResponse);
-    const selectedDoc = (
-      `
-          <div class="modal-fullpage">
-              <div class="title-header">
-              <input type="text" placeholder="Untitled document" name="Document Title" id="input-title" value="${dbResponse.docTitle}">
-              </div>
-              <div class="page">
-              <input type="textarea" placeholder="Document Content" name="Document Content" id="input-content" value="${dbResponse.docContent}" />
-              <button type="submit" id="add-button"><i class="fas fa-share"></i></button>
-              </div>
-          </div>
-          `
-    )
-    $('#gdocEdit').html(selectedDoc);
-    // $('.open-doc-btn').on('click', openGDoc);
-  })
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("fontSize", false, selSize);
+    document.designMode = "off";
 }
+
+$('select[name="fontdown"]').change(theFont);
+$('select[name="colordown"]').change(theColor);
+$('select[name="sizedown"]').change(theSize);
+
