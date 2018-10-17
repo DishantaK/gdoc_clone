@@ -70,4 +70,18 @@ const getDoc = function () {
   })
 };
 
+const createDoc = function (event) {
+  event.preventDefault();
+  const newDocument = {
+      docTitle: $('#input-title').val(),
+      docContent: $('#input-content').val()
+  };
+  $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
+      loadDocs();
+  });
+};
+
 getDoc();
+
+// Listener submit button
+$('form').on('submit', createDoc);
