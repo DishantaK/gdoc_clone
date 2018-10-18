@@ -57,66 +57,65 @@ $('select[name="sizedown"]').change(theSize);
 // function used to autosave user input
 autoSave = (function () {
 
-  timer = null;
 
-  // function to get user input from the text area
-  function userInput() {
-      let txtArray = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
-      let element = txtArray[0];
-      
-      if (element.length <= 0)
-        return null;
-      
-      return element;
-
-
+    timer = null;
+  
+    // function to get and save user input from the text area
+    function save() {
+        element = document.getElementsByClassName("title")
+        title = element[0]
+         input = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+        doc = input[0]
+        
+        if (doc || title) {
+              localStorage.setItem("autoSave" + document.location, title.value + doc)
+        console.log(title.value + doc)
+        }
+        $('#status').text('All Changes Saved!');
+    }
+  
+    // function to restore user input from the text area on reload
+    function restore() {
+        saved = localStorage.getItem("autoSave" + document.location)
+        doc = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+        element = document.getElementsByClassName("title")
+        output = doc[0] + element
+        if (saved && output) {
+            
+            //  $('#docArea').append(output);
+        }
+    }
+  
+    return {
+        // function to start autosave timer
+        start: function () {
+            
+            restore();
+           
+                timer = null;
+            
+  
+            timer = setInterval(save, 5000);
+            $('#status').text('Saving...');
+        }
+    }
+  }())
+  
+  // Starting the autosave function
+  
+  $(document).ready(function () {
+    autoSave.start()
+  })
+  
+  $(document).keypress(function () {
+    autoSave.start()
+  })
+  
+  
+  // function to delete saved user input 
+  function deleteSelec(event) {
+    if (event.keyCode === 8) {
+        document.execCommand("delete");
+    }
   }
 
-  // function to save user input from the text area
-  function save() {
-      doc = userInput();
-      if (doc) {
-            localStorage.setItem("autoSave" + document.location, doc.value)
-            console.log(doc.value)
-      }
-      $('#status').text('All Changes Saved!');
-  }
-
-  // function to restore user input from the text area on reload
-  function restore() {
-      saved = localStorage.getItem("autoSave" + document.location)
-      console.log(saved)
-      doc = userInput();
-      if (saved && doc) {
-          doc.value = saved;
-      }
-  }
-
-  return {
-      // function to start autosave timer
-      start: function () {
-          doc = userInput();
-          restore();
-         
-              timer = null;
-          
-
-          timer = setInterval(save, 5000);
-          $('#status').text('Saving...');
-      }
-  }
-}())
-
-// Starting the autosave function
-
-$(document).ready(function () {
-  autoSave.start()
-})
-
-
-// function to delete saved user input 
-function deleteSelec(event) {
-  if (event.keyCode === 8) {
-      document.execCommand("delete");
-  }
-}

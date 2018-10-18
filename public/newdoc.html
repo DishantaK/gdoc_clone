@@ -18,8 +18,10 @@
   
         <header id="docHeader">
                 <section id="docTitle">
+
                  <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /></a>
                  <input type="text" placeholder="Untitled document" />
+
                  <ul id="options">
                      <li><button class="mainOption">File</button></li>
                      <li><button class="mainOption">Edit</button></li>
@@ -30,7 +32,7 @@
                      <li><button class="mainOption">Table</button></li>
                      <li><button class="mainOption">Add-Ons</button></li>
                      <li><button class="mainOption">Help</button></li>
-                     <li><p id="status"></p></li>
+                     <li><p id="status" contenteditable="false"></p></li>
                    </ul>
                 </section>
                 <section id="styleOpt">
@@ -66,13 +68,15 @@
                 </span>
                 </section>
            </header>
-            <main id="docSection">  
-                <div id="measure"></div>
-                <form>
-                <div id="docArea" contenteditable="true"></div>
-                <input type="hidden" id="docAreaText"/>
-                </form>
-             </main>
+
+           <main id="docSection">  
+            <div id="measure"></div>
+            <form>
+            <div id="docArea" contenteditable="true"></div>
+            <input type="hidden" id="docAreaText" />
+            </form>
+         </main>
+
              <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
             <script src= "js/newdoc.js" > </script>
     
