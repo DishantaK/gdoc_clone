@@ -61,14 +61,13 @@ autoSave = (function () {
 
   // function to get user input from the text area
   function userInput() {
-      
       let txtArray = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
       let element = txtArray[0];
       
-      if (element.length === 0 || element.length === undefined){
-          return null;
-      }
-      return element[0];
+      if (element.length <= 0)
+        return null;
+      
+      return element;
 
 
   }
