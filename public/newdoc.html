@@ -29,7 +29,7 @@
                      <li><button class="mainOption">Table</button></li>
                      <li><button class="mainOption">Add-Ons</button></li>
                      <li><button class="mainOption">Help</button></li>
-                     <li><p id="status"></p></li>
+                     <li><p id="status" contenteditable="false"></p></li>
                    </ul>
                 </section>
                 <section id="styleOpt">
@@ -67,7 +67,9 @@
            </header>
             <main id="docSection">  
                 <div id="measure"></div>
-                <div id="docArea" contenteditable="true"></div>
+                <form>
+                    <input type="text" id="docAreaText" class="textarea" name="testingnew"/>
+                </form>
              </main>
              <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
             <script src= "js/newdoc.js" > </script>

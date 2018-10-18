@@ -23,13 +23,14 @@
 
 
 
-#docArea {
+#docAreaText {
     background-color: #fff;
-    width: 80%;
-    margin: auto;
+    width: 1154px;
+    margin-left: 143px;
     box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-    height: 90vh;
+    padding-bottom: 600px;
     font-family: 'K2D';
+    border: none;
 }
 
 #docTitle {
