@@ -60,9 +60,7 @@ loadDocs();
 // Listener submit button
 $('form').on('submit', createDoc);
 
+
+// Search Function
 let searchInput = $('.search-main').val();
-// const searchDoc = function () {
-//  // To edit:  use same get request - pass query as input value to search existing docs
-// }
-
-
+// add search here 
