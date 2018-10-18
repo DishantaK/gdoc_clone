@@ -58,68 +58,71 @@ $('select[name="sizedown"]').change(theSize);
 autoSave = (function () {
 
     timer = null;
-
+  
     // function to get user input from the text area
-    function userInput() {
-        element = document.getElementsByClassName('textarea')
-
-        if (element.length <= 0)
-            return null;
-            
-        return element[0];
-
-
-    }
+    // function userInput() {
+    //     let txtArray = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+    //     let element = txtArray[0];
+        
+    //     if (element <= null)
+    //       return null;
+    //     return element;
+        
+        
+    // }
 
     // function to save user input from the text area
     function save() {
-        doc = userInput();
+        input = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+        doc = input[0]
+        
         if (doc) {
-            localStorage.setItem('autoSave' + document.location, doc.value);
-            $.ajax({ url: '/add', method: 'POST'})
+              localStorage.setItem("autoSave" + document.location, doc)
+              
         }
         $('#status').text('All Changes Saved!');
     }
-
+  
     // function to restore user input from the text area on reload
     function restore() {
-        saved = localStorage.getItem('autoSave' + document.location)
-        console.log(saved)
-        doc = userInput();
-        if (saved && doc) {
-            doc.value = saved;
+        saved = localStorage.getItem("autoSave" + document.location)
+        doc = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+        output = doc[0]
+        if (saved && output) {
+            console.log(output)
+            //  $('#docArea').append(output);
         }
     }
-
+  
     return {
         // function to start autosave timer
         start: function () {
-            doc = userInput();
+            
             restore();
-            $('#textarea').keypress(function () {
+           
                 timer = null;
-                $('#status').text('Saving...');
-            });
-
-            timer = setInterval(save, 2000);
-
+            
+  
+            timer = setInterval(save, 5000);
+            $('#status').text('Saving...');
         }
     }
-}())
-
-// Starting the autosave function
-$(document).keypress(function () {
+  }())
+  
+  // Starting the autosave function
+  
+  $(document).ready(function () {
     autoSave.start()
-})
-
-$(document).ready(function () {
+  })
+  
+  $(document).keypress(function () {
     autoSave.start()
-})
-
-
-// function to delete saved user input 
-function deleteSelec(event) {
+  })
+  
+  
+  // function to delete saved user input 
+  function deleteSelec(event) {
     if (event.keyCode === 8) {
-        document.execCommand('delete');
+        document.execCommand("delete");
     }
-}
+  }
