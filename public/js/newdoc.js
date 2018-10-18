@@ -59,26 +59,16 @@ autoSave = (function () {
 
     timer = null;
   
-    // function to get user input from the text area
-    // function userInput() {
-    //     let txtArray = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
-    //     let element = txtArray[0];
-        
-    //     if (element <= null)
-    //       return null;
-    //     return element;
-        
-        
-    // }
-
-    // function to save user input from the text area
+    // function to get and save user input from the text area
     function save() {
-        input = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
+        element = document.getElementsByClassName("title")
+        title = element[0]
+         input = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
         doc = input[0]
         
-        if (doc) {
-              localStorage.setItem("autoSave" + document.location, doc)
-              
+        if (doc || title) {
+              localStorage.setItem("autoSave" + document.location, title.value + doc)
+        console.log(title.value + doc)
         }
         $('#status').text('All Changes Saved!');
     }
@@ -87,9 +77,10 @@ autoSave = (function () {
     function restore() {
         saved = localStorage.getItem("autoSave" + document.location)
         doc = $('#docAreaText').map(function(){return $('#docArea').html() }).get();
-        output = doc[0]
+        element = document.getElementsByClassName("title")
+        output = doc[0] + element
         if (saved && output) {
-            console.log(output)
+            
             //  $('#docArea').append(output);
         }
     }
