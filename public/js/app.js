@@ -54,6 +54,4 @@ $('form').on('submit', createDoc);
 
 
 
-$('#newPlus').on('click', newDoc);
-
 
