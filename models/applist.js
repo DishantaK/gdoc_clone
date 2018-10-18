@@ -12,6 +12,10 @@ const applistSchema = new Schema({
     docContent: {
         type: String
         // unique: true,
+    },
+    id: {
+        type: Object,
+        unique: true
     }
 
 });

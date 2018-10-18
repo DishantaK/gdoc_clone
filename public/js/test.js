@@ -11,6 +11,10 @@ const getDoc = function () {
     const docItem = (
       `
         <header class="docHeader">
+            <button type="submit" class="doc-btn" id="add-button">SAVE NEW DOC</button>
+            <button type="submit" class="btn-update doc-btn" id="update-btn" data-id="${dbLoad.docID}">UPDATE THIS DOC</button>
+            <a href="/">Home</a>
+
         <section class="docTitle">
          <img src="images/docs_48dp.png" placeholder="docs" />
 
@@ -19,7 +23,7 @@ const getDoc = function () {
           <ul id="options">
              <li><button class="mainOption">File</button></li>
              <li><button class="mainOption">Edit</button></li>
-             <button type="submit" id="add-button"><i class="fas fa-share"></i></button>
+
           </ul>
         </section>
         <section id="styleOpt">
@@ -58,7 +62,7 @@ const getDoc = function () {
         
         <main class="docSection">  
         <div id="measure"></div>
-        <div class="docArea">
+        <div class="docArea" id="holder">
 
         <input type="textarea" placeholder="Document Content" name="Document Content" id="input-content" value="${dbLoad.docContent}" />
         
@@ -81,7 +85,31 @@ const createDoc = function (event) {
   });
 };
 
-getDoc();
-
 // Listener submit button
 $('form').on('submit', createDoc);
+
+
+const updateDoc = function (event) {
+    event.preventDefault();
+    const id = event.target.id;
+    const itemId = $(this).data('id');
+    const upDocument = {
+        docId: id,
+        docId: itemId,
+        docTitle: $('#input-title').val(),
+        docContent: $('#input-content').val()
+    };
+    $.ajax({ url: '/api/update/:id', method: 'PUT', data: upDocument }).then(function (res) {
+        loadDocs();
+    });
+};
+
+// Listener update button
+$('#update-btn').on('submit', updateDoc);
+
+
+
+
+
+
+getDoc();

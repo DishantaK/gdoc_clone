@@ -65,15 +65,13 @@
     list-style-type: none;
     margin-left: -40px;
     justify-content: left;
-
 }
 
 #options button  {
-    background-color: #fff;
+    /* background-color: #fff;
     padding: 0px;
     border:none;
-    margin: 0px;
-
+    margin: 0px; */
 }
 
 #options button:hover {

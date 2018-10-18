@@ -50,7 +50,7 @@ module.exports = function (app) {
 
     // Route for updating a gDoc - (Not in use)
     app.put(`/api/update/:id`, function (req, res) {
-        db.findById({ _id: req.params.id })
+        db.findOneAndUpdate({ _id: req.params.id })
             .then(function (db) {
                 res.json(db);
             })
@@ -60,5 +60,4 @@ module.exports = function (app) {
     });
 
 };
-
 

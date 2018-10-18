@@ -4,7 +4,6 @@ const loadDocs = function () {
             const docItem = data.map((element) =>
                 `
                 <a class="open-doc-btn" id='${element._id}' href="/doc/${element._id}">
-
                     <div class="docPrev">
                         ${element.docContent}
                     </div>    
@@ -16,9 +15,7 @@ const loadDocs = function () {
                             <i class="fas fa-ellipsis-v"></i>
                         </div>
                         <i class="fas fa-times" id='${element._id}'></i>
-                    </div>
-                
-                   
+                    </div> 
                 </a>
                 `
             )
@@ -26,17 +23,6 @@ const loadDocs = function () {
             // $('.open-doc-btn').on('click', openDoc);
             $('.fa-times').on('click', deleteDoc);
         })
-};
-
-const createDoc = function (event) {
-    event.preventDefault();
-    const newDocument = {
-        docTitle: $('#input-title').val(),
-        docContent: $('#input-content').val()
-    };
-    $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
-        loadDocs();
-    });
 };
 
 const deleteDoc = function (event) {
@@ -47,9 +33,6 @@ const deleteDoc = function (event) {
     });
 }
 
+
+
 loadDocs();
-
-// Listener submit button
-$('form').on('submit', createDoc);
-
-
