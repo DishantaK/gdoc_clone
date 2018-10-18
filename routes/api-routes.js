@@ -17,6 +17,7 @@ module.exports = function (app) {
 
     // Route for saving a gDoc
     app.post('/add', function (req, res) {
+        console.log(req.body);
         db.create(req.body)
             .then(function (db) {
                 res.json(db);
@@ -50,13 +51,20 @@ module.exports = function (app) {
 
     // Route for updating a gDoc
     app.put(`/api/update/:id`, function (req, res) {
+        console.log(req.body.docContent);
+        console.log(req.body.docId);
+
         // db.findOneAndUpdate({itemID: req.body.itemID}, {$set: {itemCount: req.body.itemCount}})
         // db.findOneAndUpdate({ _id: req.params.id }, {$set: {docContent: req.body.docContent}})
-        db.findOneAndUpdate({ docId: req.body.docId }, {$set: {docContent: req.body.docContent}})
+        db.findOneAndUpdate({ _id: req.body.docId }, {$set: {docContent: req.body.docContent}})
             .then(function (db) {
+                console.log(db);
                 res.json(db);
             })
             .catch(function (err) {
+                console.log('error');
+
+                console.log(err);
                 res.json(err);
             });
     });

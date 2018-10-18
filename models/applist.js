@@ -12,10 +12,6 @@ const applistSchema = new Schema({
     docContent: {
         type: String
         // unique: true,
-    },
-    _id: {
-        type: Object,
-        unique: false
     }
 
 });
@@ -24,3 +20,4 @@ const applistSchema = new Schema({
 let applist = mongoose.model('applist', applistSchema);
 
 module.exports = applist;
+

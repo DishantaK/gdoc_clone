@@ -68,8 +68,13 @@ const getDoc = function () {
   })
 };
 
+getDoc();
+
+
+
 //Create Doc
 const createDoc = function (event) {
+    console.log('Create');
     event.preventDefault();
     const newDocument = {
         docTitle: $('#input-title').val(),
@@ -85,7 +90,7 @@ const updateDoc = function (event) {
     event.preventDefault();
     const id = docId;
     var upDocument = {
-        //_id: id,
+        docId: id,
         docTitle: $('#input-title').val(),
         docContent: $('#input-content').val()
     };
@@ -97,7 +102,6 @@ const updateDoc = function (event) {
     });
 };
 
-// Listener Update Button
+// Old Listener
 // $('#gdocEdit').on('submit', createDoc);
 
-getDoc();
