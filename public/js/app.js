@@ -1,4 +1,4 @@
-
+// loads existing documents
 const loadDocs = function () {
     $.getJSON('/api/applist')
         .then(function (data) {
@@ -28,6 +28,11 @@ const loadDocs = function () {
         })
 };
 
+   /**
+     * Creates New Document.
+     * @param {event} event - Creates a new doc in response to plus submit.
+     * Adds the title and text content to the db
+     */
 const createDoc = function (event) {
     event.preventDefault();
     const newDocument = {
@@ -39,9 +44,12 @@ const createDoc = function (event) {
     });
 };
 
+// Deletes documents
+
 const deleteDoc = function (event) {
     event.preventDefault();
     const id = event.target.id;
+    // @async
     $.ajax({ url: `/delete/${id}`, method: "DELETE" }).then(function () {
         loadDocs();
     });
@@ -52,8 +60,9 @@ loadDocs();
 // Listener submit button
 $('form').on('submit', createDoc);
 
-
-
-$('#newPlus').on('click', newDoc);
+let searchInput = $('.search-main').val();
+// const searchDoc = function () {
+//  // To edit:  use same get request - pass query as input value to search existing docs
+// }
 
 

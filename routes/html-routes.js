@@ -1,9 +1,18 @@
 //Require path for index.html
 const path = require('path');
 
-//Pass in 'app' for Express
+
+/**
+ * La middleware.
+ * @module exports  HTML routes
+ */
 module.exports = function (app) {
-   
+    
+       /**
+     * Get Home and Doc Pages.
+     * @async get - gets page // sends html.
+     */
+
     app.get('/doc/:id', function (req, res) {
         res.sendFile(path.join(__dirname, '../public/doc.html'));
     });

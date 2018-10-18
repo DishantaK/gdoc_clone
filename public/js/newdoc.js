@@ -57,6 +57,7 @@ $('select[name="sizedown"]').change(theSize);
 // function used to autosave user input
 autoSave = (function () {
 
+
     timer = null;
   
     // function to get and save user input from the text area
@@ -117,3 +118,4 @@ autoSave = (function () {
         document.execCommand("delete");
     }
   }
+
