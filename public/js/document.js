@@ -167,3 +167,5 @@ const updateDoc = function (event) {
     });
 };
 
+$("#gdocEdit").keyup(updateDoc);
+
