@@ -57,7 +57,9 @@ const getDoc = function () {
         <main class="docSection">  
         <div id="measure"></div>
         <div class="docArea" id="holder">
+        
         <input type="textarea" placeholder="Document Content" name="Document Content" id="input-content" value="${dbLoad.docContent}" />
+       
         </div>
         </main>
       `
