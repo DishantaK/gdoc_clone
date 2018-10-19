@@ -15,7 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb://localhost/gdocsdb', { useNewUrlParser: true });
+mongoose.connect('mongodb://heroku_c16xqplb:project123@ds121203.mlab.com:21203/heroku_c16xqplb', { useNewUrlParser: true });
 
 // Routes 
 require('./routes/api-routes')(app);
