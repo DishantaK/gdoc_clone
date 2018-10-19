@@ -1,3 +1,4 @@
+
 var url = window.location.href;
 var docId = url.split("/");
 var docId = docId[4];
