@@ -15,8 +15,9 @@ module.exports = function (app) {
             });
     });
 
-    // Route for saving a gDoc
+    // Route for creating a gDoc
     app.post('/add', function (req, res) {
+        console.log(req.body);
         db.create(req.body)
             .then(function (db) {
                 res.json(db);
@@ -48,17 +49,21 @@ module.exports = function (app) {
             });
     });
 
-    // Route for updating a gDoc - (Not in use)
+    // Route for updating a gDoc
     app.put(`/api/update/:id`, function (req, res) {
-        db.findById({ _id: req.params.id })
+        console.log(req.body.docContent);
+        console.log(req.body.docId);
+        db.findOneAndUpdate({ _id: req.body.docId }, {$set: {docContent: req.body.docContent, docTitle: req.body.docTitle}})
             .then(function (db) {
+                console.log(db);
                 res.json(db);
             })
             .catch(function (err) {
+                console.log('error');
+
+                console.log(err);
                 res.json(err);
             });
     });
 
 };
-
-

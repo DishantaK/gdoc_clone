@@ -20,3 +20,4 @@ const applistSchema = new Schema({
 let applist = mongoose.model('applist', applistSchema);
 
 module.exports = applist;
+
