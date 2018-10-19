@@ -18,20 +18,14 @@
 
 <body>
 
-  <form id="docForm">
-   <!-- This is where the div document editor loads (Old Version) -->
-  </form>
-
-  <form id="gdocEdit">
-    <!-- This is where the page document editor loads -->
-  </form>
-
+  
   <header id="top">
     <nav>
       <i class="fas fa-bars"></i>
-      <h1> <img src="images/docs_48dp.png" placeholder="docs" /> Docz</h1>
-      <div class="search"><i class="fas fa-search fa-lg" id="search"></i><input class="search-main" type="text"
-          placeholder="Search"></div>
+      <h1><img src="images/docs_48dp.png" placeholder="docs" /> Docz</h1>
+      <div class="search">
+        <i class="fas fa-search fa-lg" id="search"></i><input class="search-main" type="text" placeholder="Search">
+      </div>
 
       <div class="input-group mb-3" id="selectedInput">
         <div class="input-group-prepend">
@@ -42,21 +36,22 @@
 
       <i class="fas fa-th fa-lg" id="grid"></i>
 
+
+
     </nav>
   </header>
 
   <section class="new">
-    <h2> Start a new document </h2>
+
+    <h2>Start a new document</h2>
     <div id="newInner">
       <div class="newSelectionTop">
-        <button >
-          <a href="newdoc.html">
-              <div id="newBlank">
-                New Doc
-                <i class="fas fa-plus fa-3x" id="newDocButt"></i>
-              </div>
-            </a>
-        </button>
+        <a href="/doc">
+          <div id="newBlank">
+            New Doc
+            <i class="fas fa-plus fa-3x" id="loadDoc"></i>
+          </div>
+        </a>
 
         <h3> Blank </h3>
       </div>
@@ -73,14 +68,16 @@
     <section id="gdoclist">
       <!-- This is where all existing gDocs are listed -->
     </section>
-
   </main>
 
   <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
     crossorigin="anonymous"></script>
-  <!-- <script src="js/test.js"></script>   -->
-  
+
   <script src="/js/app.js"></script>
 
 </body>
+
 </html>
+
+
+
