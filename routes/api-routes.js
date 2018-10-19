@@ -1,3 +1,4 @@
+
 // Require all models
 const db = require('../models/applist');
 
@@ -53,10 +54,7 @@ module.exports = function (app) {
     app.put(`/api/update/:id`, function (req, res) {
         console.log(req.body.docContent);
         console.log(req.body.docId);
-
-        // db.findOneAndUpdate({itemID: req.body.itemID}, {$set: {itemCount: req.body.itemCount}})
-        // db.findOneAndUpdate({ _id: req.params.id }, {$set: {docContent: req.body.docContent}})
-        db.findOneAndUpdate({ _id: req.body.docId }, {$set: {docContent: req.body.docContent}})
+        db.findOneAndUpdate({ _id: req.body.docId }, {$set: {docContent: req.body.docContent, docTitle: req.body.docTitle}})
             .then(function (db) {
                 console.log(db);
                 res.json(db);

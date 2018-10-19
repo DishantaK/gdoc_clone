@@ -33,4 +33,3 @@ const deleteDoc = function (event) {
 }
 
 loadDocs();
-
