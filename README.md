@@ -1,8 +1,5 @@
 # gdoc_clone
 
-Clone for Google Docs
-
-
 Clone for Google Docs crafted with Node, Express, Mongodb, Jquery and a splash of good ole' fashioned Vanilla JavaSCript.
 
 

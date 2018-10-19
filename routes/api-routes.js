@@ -16,7 +16,7 @@ module.exports = function (app) {
             });
     });
 
-    // Route for saving a gDoc
+    // Route for creating a gDoc
     app.post('/add', function (req, res) {
         console.log(req.body);
         db.create(req.body)

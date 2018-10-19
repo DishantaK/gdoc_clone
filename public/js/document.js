@@ -1,3 +1,4 @@
+
 var url = window.location.href;
 var docId = url.split("/");
 var docId = docId[4];
@@ -56,8 +57,10 @@ const getDoc = function () {
         </header>
         <main class="docSection">  
         <div id="measure"></div>
-        <div class="docArea" id="holder">
-        <input type="textarea" placeholder="Document Content" name="Document Content" id="input-content" value="${dbLoad.docContent}" />
+        <form>
+        <div class="docArea" contenteditable="true" id ="bodyDoc" value="${dbLoad.docContent}"></div>
+        <input type="hidden" id="input-content" />
+        </form>
         </div>
         </main>
       `
@@ -69,16 +72,78 @@ const getDoc = function () {
 };
 
 getDoc();
+$(document).ready(function(){
+
+//font family selection
+const theFont = function(selFont){
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("fontName", false, selFont);
+    document.designMode = "off";
+}
+
+//font color selection
+const theColor = function(selColor){
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("ForeColor", false, selColor);
+    document.designMode = "off";
+}
+
+//font size selection
+const theSize = function(selSize){
+    selection = window.getSelection();
+    if (selection.rangeCount && selection.getRangeAt){
+        range = selection.getRangeAt(0);
+    }
+    document.designMode = "on";
+    if (range){
+        selection.removeAllRanges();
+        selection.addRange(range);
+    }
+    document.execCommand("fontSize", false, selSize);
+    document.designMode = "off";
+}
 
 
+$('#gdocEdit').on("change",function(e){
+    if(e.target.id === "fontcolor"){
+        let selColor = $('#fontcolor').val();
+        theColor(selColor);
+    }else if(e.target.id === "fontsize"){
+        let selSize = $('#fontsize').val();
+        theSize(selSize);
+    }else if(e.target.id === "thefonts"){
+        let selFont =$('#thefonts').val();
+        theFont(selFont);
+    }
+})
 
+})
 //Create Doc
 const createDoc = function (event) {
     console.log('Create');
     event.preventDefault();
+    let divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
+    let bodyStrng = divBody[0];
+    console.log(bodyStrng);
     const newDocument = {
         docTitle: $('#input-title').val(),
-        docContent: $('#input-content').val()
+        docContent: bodyStrng
     };
     $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
         // loadDocs();
@@ -89,19 +154,18 @@ const createDoc = function (event) {
 const updateDoc = function (event) {
     event.preventDefault();
     const id = docId;
+    let divBodyUpdt = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
+    let bodyStrngUpdt = divBodyUpdt[0];
     var upDocument = {
         docId: id,
         docTitle: $('#input-title').val(),
-        docContent: $('#input-content').val()
+        docContent: bodyStrngUpdt
     };
     console.log($('#input-content').val());
     $.ajax({ url: `/api/update/${id}`, method: 'PUT', data: upDocument }).then(function (res) {
         console.log(id);
         console.log(upDocument);
-        // loadDocs();
     });
 };
 
-// Old Listener
-// $('#gdocEdit').on('submit', createDoc);
-
+$("#gdocEdit").keyup(updateDoc);
