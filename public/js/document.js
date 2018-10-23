@@ -10,16 +10,15 @@ const getDoc = function () {
     console.log(dbLoad);
     const docItem = (
       `
-        <header class="docHeader">
-            <a href="/"><i class="fas fa-home doc-btn"></i></a>
-            <i class="fas fa-save doc-btn"></i>
-            <i class="fas fa-sync doc-btn"></i>
-        <section class="docTitle">
-         <img src="images/docs_48dp.png" placeholder="docs" />
-         <input type="text" placeholder="Untitled document" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
-          <ul id="options">
-             <li><button class="mainOption">File</button></li>
-             <li><button class="mainOption">Edit</button></li>
+      <header class="docHeader">
+      <section class="docTitle">
+      <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /> </a>
+       <input type="text" placeholder="Untitled document" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
+        <ul id="options">
+        <li><button class="mainOption">File</button></li>
+        <li><button class="mainOption">Edit</button></li>
+        <li><button class="mainOption" id="saveNew">Save</button></li>
+        <li><button class="mainOption" id="updateNew">Update</button></li>
           </ul>
         </section>
         <section id="styleOpt">
@@ -66,8 +65,8 @@ const getDoc = function () {
       `
     );
     $('#gdocEdit').html(docItem);
-    $('.fa-save').on('click', createDoc);
-    $('.fa-sync').on('click', updateDoc);
+    $('#saveNew').on('click', createDoc);
+    $('#updateNew').on('click', updateDoc);
   })
 };
 
