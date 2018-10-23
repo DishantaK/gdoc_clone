@@ -66,7 +66,6 @@
 
 .open-doc-btn {
     display: inline-block;
-
     border: 1px solid #eee;
     background: #fff;
     cursor: pointer;
@@ -78,8 +77,6 @@
 .open-doc-btn:hover {
   
     text-decoration: none;
-
-
     border: 1px solid #000;
     cursor: pointer;
 
@@ -230,10 +227,23 @@ header {
 
 main  {
     background-color: #F4F4F4;
-    height: 100vh;
+    height: 100%;
     padding: 25px 70px;
 }
 
+#gdoclist {
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+   
+    height: 100%;
+    width: 75%;
+    margin:auto;
+  
+}
+
+.fa-times {
+    color: #777;
+}
 /* Recent Docs */
 
 #stickyNav {
@@ -262,22 +272,33 @@ main  {
     margin-left: 70px;
 }
 
-#gdoclist {
-    /* display: grid;
-    grid-template-columns: repeat(3,1fr);
-    grid-gap: 25px; */
+
+.open-doc-btn {
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    padding: 0px;
+    background-color: #fff;
+   
+}
+
+.open-doc-btn:hover {
+    border: 1px solid #7092F1;
+}
+
+.open-doc-btn h2 {
+    color: #777;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
 }
 
 .docPrev {
     width: 200px;
-    height: 260px;
-    background-color: #fff;
+    height: 280px;
+    resize: none;
 
     display: grid;
     /* grid-template-columns: 1fr;
     grid-template-rows: 70% 30%; */
-    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-
+   
 
     color: #3C3C3C;
     overflow: hidden;
@@ -319,6 +340,12 @@ h4 {
    color:  #999;
 }
 
+.fa-times {
+
+}
+.new, main {
+    overflow: hidden;
+}
 @media only screen and (min-width:788px) {
     #top h1 img{
         display: inline;
@@ -379,6 +406,14 @@ h4 {
         grid-template-columns: repeat(4,1fr);
         width: 80%;
     }
-    
-}
 
+    /* #gdoclist {
+        
+        grid-template-columns: repeat(3,1fr);
+       
+    } */
+    
+
+
+
+}
