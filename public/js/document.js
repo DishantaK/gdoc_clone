@@ -189,7 +189,7 @@ id = docId,
 divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
 bodyStrng = divBody[0];
 console.log(bodyStrng)
-if (id === undefined && bodyStrng != undefined) {
+if (id === undefined && bodyStrng !== null) {
 window.addEventListener('beforeunload', function () {
     createDoc()
 });
