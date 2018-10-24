@@ -73,8 +73,6 @@ const getDoc = function () {
 };
 
 getDoc();
-
-
 $(document).ready(function(){
 
 //font family selection
