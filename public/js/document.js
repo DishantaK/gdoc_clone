@@ -13,7 +13,7 @@ const getDoc = function () {
       <header class="docHeader">
       <section class="docTitle">
       <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /> </a>
-       <input type="text" placeholder="Untitled document" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
+       <input type="text" placeholder="Untitled document" onfocus="this.placeholder = ''" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
         <ul id="options">
         <li><button class="mainOption">File</button></li>
         <li><button class="mainOption">Edit</button></li>
@@ -186,8 +186,10 @@ $("#gdocEdit").keypress(function () {
 
 // function used to autosave user new doc
 id = docId,
-console.log(id)
-if (id === undefined) {
+divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
+bodyStrng = divBody[0];
+console.log(bodyStrng)
+if (id === undefined && bodyStrng != undefined) {
 window.addEventListener('beforeunload', function () {
     createDoc()
 });
