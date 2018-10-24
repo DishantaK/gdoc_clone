@@ -19,6 +19,7 @@ const getDoc = function () {
         <li><button class="mainOption">Edit</button></li>
         <li><button class="mainOption" id="saveNew">Save</button></li>
         <li><button class="mainOption" id="updateNew">Update</button></li>
+        <li><p id="status" contenteditable="false"></p></li>
           </ul>
         </section>
         <section id="styleOpt">
@@ -150,8 +151,8 @@ const createDoc = function (event) {
   };
 
 //Update Doc
-const updateDoc = function (event) {
-    event.preventDefault();
+const updateDoc = function () {
+    
     const id = docId;
     let divBodyUpdt = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
     let bodyStrngUpdt = divBodyUpdt[0];
@@ -167,4 +168,22 @@ const updateDoc = function (event) {
     });
 };
 
-$("#gdocEdit").keyup(updateDoc);
+// function used to autosave user input
+timer = 0;
+$("#gdocEdit").keypress(function () {
+    $('#status').text('Saving...');
+
+   
+    if (timer) clearTimeout(timer);
+
+    timer = setTimeout(function () {
+       updateDoc()
+        $('#status').text('All Changes Saved!');
+    }, 2000);
+});
+
+function deleteSelec(event) {
+    if (event.keyCode === 8) {
+        document.execCommand("delete");
+    }
+  }
