@@ -19,6 +19,7 @@ const getDoc = function () {
         <li><button class="mainOption">Edit</button></li>
         <li><button class="mainOption" id="saveNew">Save</button></li>
         <li><button class="mainOption" id="updateNew">Update</button></li>
+        <li><p id="status" contenteditable="false"></p></li>
           </ul>
         </section>
         <section id="styleOpt">
@@ -134,9 +135,9 @@ $('#gdocEdit').on("change",function(e){
 
 })
 //Create Doc
-const createDoc = function (event) {
+const createDoc = function () {
     console.log('Create');
-    event.preventDefault();
+    
     let divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
     let bodyStrng = divBody[0];
     console.log(bodyStrng);
@@ -144,14 +145,15 @@ const createDoc = function (event) {
         docTitle: $('#input-title').val(),
         docContent: bodyStrng
     };
+    localStorage.setItem('doczAutoSave' + document.location, newDocument)
     $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
         // loadDocs();
     });
   };
 
 //Update Doc
-const updateDoc = function (event) {
-    event.preventDefault();
+const updateDoc = function () {
+    
     const id = docId;
     let divBodyUpdt = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
     let bodyStrngUpdt = divBodyUpdt[0];
@@ -161,10 +163,38 @@ const updateDoc = function (event) {
         docContent: bodyStrngUpdt
     };
     console.log($('#input-content').val());
+    localStorage.getItem('doczAutoSave')
     $.ajax({ url: `/api/update/${id}`, method: 'PUT', data: upDocument }).then(function (res) {
         console.log(id);
         console.log(upDocument);
     });
 };
 
-$("#gdocEdit").keyup(updateDoc);
+// function used to autosave user update
+timer = 0;
+$("#gdocEdit").keypress(function () {
+    $('#status').text('Saving...');
+
+   
+    if (timer) clearTimeout(timer);
+
+    timer = setTimeout(function () {
+       updateDoc();
+        $('#status').text('All Changes Saved!');
+    }, 2000);
+});
+
+// function used to autosave user new doc
+id = docId,
+console.log(id)
+if (id === undefined) {
+window.addEventListener('beforeunload', function () {
+    createDoc()
+});
+}
+
+function deleteSelec(event) {
+    if (event.keyCode === 8) {
+        document.execCommand("delete");
+    }
+  }
