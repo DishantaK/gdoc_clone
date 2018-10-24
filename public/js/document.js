@@ -73,6 +73,8 @@ const getDoc = function () {
 };
 
 getDoc();
+
+
 $(document).ready(function(){
 
 //font family selection
@@ -120,7 +122,7 @@ const theSize = function(selSize){
     document.designMode = "off";
 }
 
-//Font Format selection
+// Set font format selection
 $('#gdocEdit').on("change",function(e){
     if(e.target.id === "fontcolor"){
         let selColor = $('#fontcolor').val();
