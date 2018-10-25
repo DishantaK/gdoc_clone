@@ -13,7 +13,7 @@ const getDoc = function () {
       <header class="docHeader">
       <section class="docTitle">
       <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /> </a>
-       <input type="text" placeholder="Untitled document" onfocus="this.placeholder = ''" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
+       <input type="text" placeholder="${dbLoad.docTitle}" onfocus="this.placeholder = ''" name="Document Title" id="input-title">
         <ul id="options">
         <li><button class="mainOption">File</button></li>
         <li><button class="mainOption">Edit</button></li>
