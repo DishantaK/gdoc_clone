@@ -7,7 +7,7 @@ console.log(docId);
 //Get Doc and open in editor
 const getDoc = function () {
   $.ajax({ url: `/get/${docId}`, method: "GET" }).then(function (dbLoad) {
-    console.log(dbLoad);
+    let docBody = $.parseHTML(dbLoad.docContent);
     const docItem = (
       `
       <header class="docHeader">
@@ -58,14 +58,16 @@ const getDoc = function () {
         <main class="docSection">  
         <div id="measure"></div>
         <form>
-        <div class="docArea" contenteditable="true" id ="bodyDoc" value="${dbLoad.docContent}"></div>
+        <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
         <input type="hidden" id="input-content" />
         </form>
         </div>
         </main>
       `
     );
+
     $('#gdocEdit').html(docItem);
+    $('#bodyDoc').html(docBody)
     $('#saveNew').on('click', createDoc);
     $('#updateNew').on('click', updateDoc);
   })
@@ -119,7 +121,7 @@ const theSize = function(selSize){
     document.designMode = "off";
 }
 
-
+// Set font format selection
 $('#gdocEdit').on("change",function(e){
     if(e.target.id === "fontcolor"){
         let selColor = $('#fontcolor').val();
@@ -141,13 +143,11 @@ const createDoc = function () {
     
     let divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
     let bodyStrng = divBody[0];
-    console.log(bodyStrng);
     const newDocument = {
         docTitle: $('#input-title').val(),
         docContent: bodyStrng
     };
     $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
-        // loadDocs();
     });
   };
 
