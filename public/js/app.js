@@ -13,7 +13,7 @@ const loadDocs = function () {
                         <h2>${element.docTitle}</h2>  
                         <div class="labelGroup">
                             <i class="fas fa-sticky-note"></i>
-                            <h4> Open October 4, 2018</h4>
+                            <h4 class="date">October 25, 2018</h4>
                             <i class="fas fa-times " id='${element._id}'></i>
                         </div>
                        
