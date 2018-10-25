@@ -5,7 +5,9 @@ const loadDocs = function () {
                 `
                 <a class="open-doc-btn" id='${element._id}' href="/doc/${element._id}">
                     <div class="docPrev">
-                        ${element.docContent}
+                        <div class="scale-down">
+                            ${element.docContent}
+                        </div>
                     </div>    
                     <div class="captionLabel">
                         <h2>${element.docTitle}</h2>  
