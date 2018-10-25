@@ -179,15 +179,17 @@ if (id === undefined) {
 
 timer = 0;
     $("#gdocEdit").keypress(function () {
-    $('#status').text('Saving...');
+        $('#status').text('Saving...');
 
-   
-if (timer) {clearTimeout(timer);
+    
+        if (timer) {
+            clearTimeout(timer);
+        }
 
-    timer = setTimeout(function () {
-    updateDoc();
-    $('#status').text('All Changes Saved!');
-    }, 2000);
+        timer = setTimeout(function () {
+        updateDoc();
+        $('#status').text('All Changes Saved!');
+        }, 2000);
 });
 
 // Delete Function
