@@ -136,6 +136,7 @@ $('#gdocEdit').on("change",function(e){
 })
 //Create Doc
 const createDoc = function () {
+
     console.log('Create');
     
     let divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
@@ -145,7 +146,6 @@ const createDoc = function () {
         docTitle: $('#input-title').val(),
         docContent: bodyStrng
     };
-    localStorage.setItem('doczAutoSave' + document.location, newDocument)
     $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
         // loadDocs();
     });
@@ -163,40 +163,38 @@ const updateDoc = function () {
         docContent: bodyStrngUpdt
     };
     console.log($('#input-content').val());
-    localStorage.getItem('doczAutoSave')
     $.ajax({ url: `/api/update/${id}`, method: 'PUT', data: upDocument }).then(function (res) {
         console.log(id);
         console.log(upDocument);
     });
 };
 
-// function used to autosave user update
+
+// Autosave function
+id = docId;
+if (id === undefined) {
+    window.addEventListener('beforeunload', function () {
+        createDoc()   
+});
+} 
+else {
 timer = 0;
-$("#gdocEdit").keypress(function () {
+    $("#gdocEdit").keypress(function () {
     $('#status').text('Saving...');
 
    
-    if (timer) clearTimeout(timer);
+if (timer) clearTimeout(timer);
 
     timer = setTimeout(function () {
-       updateDoc();
-        $('#status').text('All Changes Saved!');
+    updateDoc();
+    $('#status').text('All Changes Saved!');
     }, 2000);
-});
-
-// function used to autosave user new doc
-id = docId,
-divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
-bodyStrng = divBody[0];
-console.log(bodyStrng)
-if (id === undefined && bodyStrng !== null) {
-window.addEventListener('beforeunload', function () {
-    createDoc()
 });
 }
 
+// Delete Function
 function deleteSelec(event) {
-    if (event.keyCode === 8) {
-        document.execCommand("delete");
+if (event.keyCode === 8) {
+    document.execCommand("delete");
     }
   }
