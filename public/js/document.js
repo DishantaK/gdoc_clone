@@ -176,8 +176,7 @@ if (id === undefined) {
     window.addEventListener('beforeunload', function () {
         createDoc()   
 });
-} 
-else {
+
 timer = 0;
     $("#gdocEdit").keypress(function () {
     $('#status').text('Saving...');
@@ -190,7 +189,7 @@ if (timer) clearTimeout(timer);
     $('#status').text('All Changes Saved!');
     }, 2000);
 });
-}
+
 
 // Delete Function
 $("#gdocEdit").keydown(function() {
