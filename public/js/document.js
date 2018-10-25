@@ -52,6 +52,8 @@ const getDoc = function () {
                 <option value= 6>x4</option>
                 <option value= 7>x5</optoin>
                 </select>
+
+        
         </span>
         </section>
         </header>
@@ -105,6 +107,9 @@ const theColor = function(selColor){
 }
 
 //font size selection
+/**
+ * @param selSize takes in size of select option
+ */
 const theSize = function(selSize){
     selection = window.getSelection();
     if (selection.rangeCount && selection.getRangeAt){
@@ -119,7 +124,9 @@ const theSize = function(selSize){
     document.designMode = "off";
 }
 
-
+/**
+ * @param e responds to user event, if selsize adjusted change size
+ */
 $('#gdocEdit').on("change",function(e){
     if(e.target.id === "fontcolor"){
         let selColor = $('#fontcolor').val();
@@ -185,6 +192,9 @@ $("#gdocEdit").keypress(function () {
 });
 
 // function used to autosave user new doc
+/**
+ * @param id finds doc id and deletes or removes that
+ */
 id = docId,
 console.log(id)
 if (id === undefined) {

@@ -89,6 +89,10 @@
     grid-row:span 1;
 }
 
+option {
+    border: none;
+}
+
 
 @media only screen  and (max-width: 500px){
     #docHeader {
