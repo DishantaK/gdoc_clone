@@ -193,8 +193,9 @@ if (timer) clearTimeout(timer);
 }
 
 // Delete Function
-function deleteSelec(event) {
-if (event.keyCode === 8) {
-    document.execCommand("delete");
-    }
-  }
+$("#gdocEdit").keydown(function() {
+    key = event.keyCode || event.charCode;
+
+    if( key == 8 || key == 46 )
+    updateDoc();
+})
