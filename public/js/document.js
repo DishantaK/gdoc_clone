@@ -13,7 +13,7 @@ const getDoc = function () {
       <header class="docHeader">
       <section class="docTitle">
       <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /> </a>
-       <input type="text" placeholder="Untitled document" onfocus="this.placeholder = ''" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
+       <input type="text" placeholder="${dbLoad.docTitle}" onfocus="this.placeholder = ''" name="Document Title" id="input-title">
         <ul id="options">
         <li><button class="mainOption">File</button></li>
         <li><button class="mainOption">Edit</button></li>
@@ -138,6 +138,7 @@ $('#gdocEdit').on("change",function(e){
 })
 //Create Doc
 const createDoc = function () {
+
     console.log('Create');
     
     let divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
@@ -146,7 +147,6 @@ const createDoc = function () {
         docTitle: $('#input-title').val(),
         docContent: bodyStrng
     };
-    localStorage.setItem('doczAutoSave' + document.location, newDocument)
     $.ajax({ url: '/add', method: 'POST', data: newDocument }).then(function (res) {
     });
   };
@@ -162,43 +162,39 @@ const updateDoc = function () {
         docTitle: $('#input-title').val(),
         docContent: bodyStrngUpdt
     };
-
     console.log($('#input-content').val());
-    localStorage.getItem('doczAutoSave')
-
     $.ajax({ url: `/api/update/${id}`, method: 'PUT', data: upDocument }).then(function (res) {
         console.log(id);
         console.log(upDocument);
     });
 };
 
-// function used to autosave user update
+
+// Autosave function
+id = docId;
+if (id === undefined) {
+    window.addEventListener('beforeunload', function () {
+        createDoc()   
+});
+
 timer = 0;
-$("#gdocEdit").keypress(function () {
+    $("#gdocEdit").keypress(function () {
     $('#status').text('Saving...');
 
    
-    if (timer) clearTimeout(timer);
+if (timer) clearTimeout(timer);
 
     timer = setTimeout(function () {
-       updateDoc();
-        $('#status').text('All Changes Saved!');
+    updateDoc();
+    $('#status').text('All Changes Saved!');
     }, 2000);
 });
 
-// function used to autosave user new doc
-id = docId,
-divBody = $('#input-content').map(function(){return $('#bodyDoc').html() }).get()
-bodyStrng = divBody[0];
-console.log(bodyStrng)
-if (id === undefined && bodyStrng != undefined) {
-window.addEventListener('beforeunload', function () {
-    createDoc()
-});
-}
 
-function deleteSelec(event) {
-    if (event.keyCode === 8) {
-        document.execCommand("delete");
-    }
-  }
+// Delete Function
+$("#gdocEdit").keydown(function() {
+    key = event.keyCode || event.charCode;
+
+    if( key == 8 || key == 46 )
+    updateDoc();
+})
