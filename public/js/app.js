@@ -13,16 +13,7 @@ const loadDocs = function () {
                         <h2>${element.docTitle}</h2>  
                         <div class="labelGroup">
                             <i class="fas fa-sticky-note"></i>
-                            <h4 class="date"></h4>
-                            <script>
-                                var d = new Date();
-                                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-                                var date = document.querySelectorAll(".date")
-                                var i;
-                                for (i = 0; i < date.length; i++) {
-                                    date[i].innerHTML = months[d.getMonth()] + '  ' + d.getDate() + ',  ' + d.getFullYear();
-                                }
-                            </script>
+                            <h4 class="date">October 25, 2018</h4>
                             <i class="fas fa-times " id='${element._id}'></i>
                         </div>
                        

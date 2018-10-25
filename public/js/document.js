@@ -182,7 +182,7 @@ timer = 0;
     $('#status').text('Saving...');
 
    
-if (timer) clearTimeout(timer);
+if (timer) {clearTimeout(timer);
 
     timer = setTimeout(function () {
     updateDoc();
@@ -190,4 +190,11 @@ if (timer) clearTimeout(timer);
     }, 2000);
 });
 
+// Delete Function
+$("#gdocEdit").keydown(function() {
+    key = event.keyCode || event.charCode;
 
+    if( key == 8 || key == 46 ) {
+    updateDoc();
+    }
+})
