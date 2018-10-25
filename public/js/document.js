@@ -195,6 +195,7 @@ if (timer) clearTimeout(timer);
 $("#gdocEdit").keydown(function() {
     key = event.keyCode || event.charCode;
 
-    if( key == 8 || key == 46 )
+    if( key == 8 || key == 46 ){
     updateDoc();
+    }
 })
