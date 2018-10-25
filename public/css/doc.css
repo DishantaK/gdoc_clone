@@ -53,9 +53,8 @@
 }
 
 .docTitle input {
-     background-color: transparent;
+    background-color: transparent;
     border: none;
-    height: 60%;
     width: 25%;
 }
 
@@ -70,7 +69,7 @@
     list-style-type: none;
     margin-left: -20px;
     justify-content: left;
-    margin-top: -10px;
+    margin-top: -20px;
  
     grid-row:span 1;
 }
@@ -137,7 +136,6 @@
         grid-gap:15px;
         justify-content: right;
         margin-bottom: 10px;
-        margin-left: 30px;
         width: 100%;
         justify-self: center;
     }
