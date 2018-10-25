@@ -1,3 +1,7 @@
+.fas {
+    color: #6e6e6e;
+}
+
 
 .doc-btn {
     position: relative;
@@ -112,8 +116,8 @@ h3 {
 }
 
 header {
-    height: 80px;
-    padding: 20px;
+    height: 70px;
+    padding: 10px;
     border-bottom: 1px solid #888;
 }
 
@@ -161,10 +165,7 @@ header {
 
 #grid {
     grid-column: span 1;
-    margin-left: 15px;
-    margin-bottom: 15px;
-    grid-column: span 1;
-    color: #666;
+    float: right;
 }
 
 /* New doc or Template */
@@ -291,18 +292,10 @@ main  {
 }
 
 .docPrev {
-    width: 200px;
+    width: auto;
     height: 280px;
-    resize: none;
-
-    display: grid;
-    /* grid-template-columns: 1fr;
-    grid-template-rows: 70% 30%; */
-   
-
     color: #3C3C3C;
     overflow: hidden;
-    font-size: 6px;
 }
 
 .docPrev:hover {
@@ -313,6 +306,16 @@ main  {
     grid-row: span 1;
 }
 
+.scale-down {
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    transform: scale(0.5);
+    position: relative;
+    top: 0px;
+    left: 0px;
+}
+
 h4 {
     font-size: 14px;
     color: #999;
@@ -321,6 +324,9 @@ h4 {
     border-top: 1px solid rgb(221, 221, 221);
     padding: 15px;
     margin-top: -100px;
+    background: #fff;
+    z-index: 100;
+    position: relative;
 }
 
 .labelGroup {
@@ -364,6 +370,7 @@ h4 {
         grid-template-columns: 5% 15% 1fr 10%;
         align-items: center;
         grid-gap:5px;
+        margin: 0px 10px;
     }
 
     .search-main {
