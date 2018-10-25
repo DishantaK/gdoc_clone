@@ -176,7 +176,7 @@ if (id === undefined) {
     window.addEventListener('beforeunload', function () {
         createDoc()   
 });
-
+}
 timer = 0;
     $("#gdocEdit").keypress(function () {
         $('#status').text('Saving...');
