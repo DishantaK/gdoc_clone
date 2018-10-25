@@ -12,51 +12,60 @@ const getDoc = function () {
       `
       <header class="docHeader">
       <section class="docTitle">
-      <a href="/"><img src="images/docs_48dp.png" placeholder="docs" /> </a>
-       <input type="text" placeholder="Untitled document" onfocus="this.placeholder = ''" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
+      <div style="float: left;"> 
+        <a href="/"><img src="/images/docs_48dp.png" placeholder="docs" /></a>
+      </div>
+      <div> 
+        <input type="text" placeholder="Untitled document" onfocus="this.placeholder = ''" name="Document Title" id="input-title" value="${dbLoad.docTitle}">
         <ul id="options">
-        <li><button class="mainOption">File</button></li>
-        <li><button class="mainOption">Edit</button></li>
-        <li><button class="mainOption" id="saveNew">Save</button></li>
-        <li><button class="mainOption" id="updateNew">Update</button></li>
-        <li><p id="status" contenteditable="false"></p></li>
-          </ul>
-        </section>
-        <section id="styleOpt">
-        <span>
-            <select id='thefonts' name=fontdown>
-                <option value="K2D">Select Font</option>
-                <option value="Times New Roman">Times New Roman</option>
-                <option value="Courier">Courier</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Charmonman">Charmonman</option>
-                <option value="Kodchasan">Kodchasan</option>
-            </select>
-        </span>
-        <span>
-            <select id='fontcolor' name=colordown>
-                <option value="black">Select Font Color</option>
-                <option value="blue">Blue</option>
-                <option value="yellow">Yellow</option>
-                <option value="red">Red</option>
-                <option value="orange">Orange</option>
-                <option value="green">Green</option>
-            </select>
-        </span>
-        <span>
-            <select id='fontsize' name=sizedown>
-                <option value= 3>Select Font Size</option>
-                <option value= 2>x.5</option>
-                <option value= 4>x2</option>
-                <option value= 5>x3</option>
-                <option value= 6>x4</option>
-                <option value= 7>x5</optoin>
+            <li><button class="mainOption">File</button></li>
+            <li><button class="mainOption">Edit</button></li>
+            <li><button class="mainOption" id="saveNew">Save</button></li>
+            <li><button class="mainOption" id="updateNew">Update</button></li>
+        </ul>
+      </div>
+      <p class="stat" id="status" contenteditable="false"></p>
+      </section>
+
+        <section class="stylebar" id="styleOpt">
+            <span>
+                <select id='thefonts' name=fontdown>
+                    <option value="K2D">Select Font</option>
+                    <option value="Times New Roman">Times New Roman</option>
+                    <option value="Courier">Courier</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Charmonman">Charmonman</option>
+                    <option value="Kodchasan">Kodchasan</option>
                 </select>
-        </span>
+            </span>
+            <span>
+                <select id='fontcolor' name=colordown>
+                    <option value="black">Select Font Color</option>
+                    <option value="blue">Blue</option>
+                    <option value="yellow">Yellow</option>
+                    <option value="red">Red</option>
+                    <option value="orange">Orange</option>
+                    <option value="green">Green</option>
+                </select>
+            </span>
+            <span>
+                <select id='fontsize' name=sizedown>
+                    <option value= 3>Select Font Size</option>
+                    <option value= 2>x.5</option>
+                    <option value= 4>x2</option>
+                    <option value= 5>x3</option>
+                    <option value= 6>x4</option>
+                    <option value= 7>x5</optoin>
+                    </select>
+            </span>
         </section>
+
         </header>
+
         <main class="docSection">  
-        <div id="measure"></div>
+
+        <!-- <div id="measure"></div> -->
+
         <form>
         <div class="docArea" contenteditable="true" id ="bodyDoc" value=""></div>
         <input type="hidden" id="input-content" />
